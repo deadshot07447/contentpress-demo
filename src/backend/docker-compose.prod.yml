@@ -22,6 +22,8 @@ services:
       WORDPRESS_DB_NAME: contentpress_db
     volumes:
       - ./wp-content:/var/www/html/wp-content
+    depends_on:
+      - db
 
   nginx:
     image: nginx:alpine
