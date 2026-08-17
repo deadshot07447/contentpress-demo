@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: contentpress_db
       MYSQL_USER: wp_user
       MYSQL_PASSWORD: wp_password
+    ports:
+      - "127.0.0.1:3306:3306"
     volumes:
       - db_data:/var/lib/mysql
 
