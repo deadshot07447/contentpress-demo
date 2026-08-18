@@ -1,16 +1,7 @@
 import { apolloClient } from "@/lib/apollo-client";
 import { GET_ALL_SERVICES } from "@/lib/queries";
 import Link from "next/link";
-import type { Metadata } from "next";
 import styles from "./services.module.css";
-
-export const dynamic = "force-dynamic";
-
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Explore ContentPress Co.'s full range of services — web development, cloud solutions, digital marketing, and consulting.",
-};
 
 async function getServices() {
   try {
@@ -21,8 +12,11 @@ async function getServices() {
   }
 }
 
-export default async function ServicesPage() {
+export default async function ServicesPage({ data }: { data?: any }) {
   const cmsServices = await getServices();
+  const acf = data?.acfFields || {};
+  const headline = acf.headline || "Services Designed for <span class=\"gradient-text\">Real Results</span>";
+  const subhead = acf.subhead || "From idea to launch — and everything in between. We offer a comprehensive suite of digital services built to help your business scale.";
 
   const services = cmsServices.map((s: any) => ({
     id: s.id,
@@ -41,12 +35,9 @@ export default async function ServicesPage() {
         <div className={styles.heroGlow}></div>
         <div className="container">
           <span className="badge badge-blue">What We Offer</span>
-          <h1 className={styles.heroHeading}>
-            Services Designed for <span className="gradient-text">Real Results</span>
-          </h1>
+          <h1 className={styles.heroHeading} dangerouslySetInnerHTML={{ __html: headline }} />
           <p className={styles.heroSub}>
-            From idea to launch — and everything in between. We offer a comprehensive
-            suite of digital services built to help your business scale.
+            {subhead}
           </p>
         </div>
       </section>

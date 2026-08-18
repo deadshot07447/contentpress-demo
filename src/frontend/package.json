@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^4.2.12",
+    "@swc/helpers": "^0.5.23",
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",
     "graphql": "^17.0.2",

@@ -8,6 +8,9 @@ export const GET_PAGE_BY_SLUG = gql`
       title
       content
       slug
+      template {
+        templateName
+      }
       seo {
         title
         metaDesc
