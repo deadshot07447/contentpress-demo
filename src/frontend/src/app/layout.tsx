@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body suppressHydrationWarning>
         <div className="noise-overlay" aria-hidden="true" />
         <Navbar />
         <main style={{ minHeight: "100vh", paddingTop: "var(--nav-height)" }}>

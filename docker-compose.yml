@@ -23,9 +23,26 @@ services:
       WORDPRESS_DB_PASSWORD: wp_password
       WORDPRESS_DB_NAME: contentpress_db
     volumes:
-      - ./wp-content:/var/www/html/wp-content
+      - ./src/backend/wp-content:/var/www/html/wp-content
     depends_on:
       - db
+
+  nextjs:
+    build:
+      context: ./src/frontend
+      dockerfile: Dockerfile.dev
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src/frontend:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      # Now Next.js communicates directly with the WordPress container over the internal Docker network!
+      - NEXT_PUBLIC_WORDPRESS_API_URL=http://wordpress:80/graphql
+    depends_on:
+      - wordpress
 
 volumes:
   db_data:

@@ -98,10 +98,10 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-12 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
       {/* Contact Info */}
-      <div className="lg:sticky top-[104px] p-10 bg-brand-800 border border-neutral-800 rounded-3xl">
-        <h2 className="text-2xl font-bold text-white mb-3">Let&apos;s Talk Business</h2>
+      <div className="lg:sticky top-[104px] p-8 lg:p-10 bg-neutral-900/60 backdrop-blur-xl border border-white/5 rounded-3xl shadow-2xl">
+        <h2 className="text-3xl font-extrabold text-white mb-4 tracking-tight">Let&apos;s Talk Business</h2>
         <p className="text-[15px] text-neutral-500 leading-relaxed mb-8">
           Have a project in mind? Fill in the form and our team will get back to you
           within 24 hours with a tailored proposal.
@@ -126,11 +126,11 @@ export default function ContactForm() {
       </div>
 
       {/* Form */}
-      <form className="p-10 bg-brand-800 border border-neutral-800 rounded-3xl flex flex-col gap-6" onSubmit={handleSubmit} noValidate id="contact-form">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <form className="p-8 lg:p-10 bg-neutral-900/60 backdrop-blur-xl border border-white/5 rounded-3xl shadow-2xl flex flex-col gap-6" onSubmit={handleSubmit} noValidate id="contact-form">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="flex flex-col gap-2">
-            <label htmlFor="contact-name" className="text-sm font-semibold text-neutral-300">
-              Full Name <span className="text-danger ml-0.5">*</span>
+            <label htmlFor="contact-name" className="text-[13px] uppercase tracking-wider font-bold text-neutral-400">
+              Full Name <span className="text-brand-400 ml-0.5">*</span>
             </label>
             <input
               id="contact-name"
@@ -139,13 +139,13 @@ export default function ContactForm() {
               placeholder="Jane Smith"
               value={form.name}
               onChange={handleChange}
-              className={`w-full px-4 py-3 bg-brand-900 border-[1.5px] ${errors.name ? 'border-danger focus:border-danger focus:ring-danger/15' : 'border-neutral-700 focus:border-brand-500 focus:ring-[3px] focus:ring-brand-500/15'} rounded-xl text-white font-body text-[15px] transition-all outline-none placeholder:text-neutral-600`}
+              className={`w-full px-5 py-4 bg-black/40 border ${errors.name ? 'border-danger focus:border-danger focus:bg-danger/5' : 'border-white/10 focus:border-brand-500 focus:bg-black/60'} rounded-2xl text-white font-body text-[15px] transition-all outline-none placeholder:text-neutral-600 shadow-inner`}
             />
             {errors.name && <span className="text-[13px] text-danger mt-1">{errors.name}</span>}
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="contact-email" className="text-sm font-semibold text-neutral-300">
-              Email Address <span className="text-danger ml-0.5">*</span>
+            <label htmlFor="contact-email" className="text-[13px] uppercase tracking-wider font-bold text-neutral-400">
+              Email Address <span className="text-brand-400 ml-0.5">*</span>
             </label>
             <input
               id="contact-email"
@@ -154,15 +154,15 @@ export default function ContactForm() {
               placeholder="jane@company.com"
               value={form.email}
               onChange={handleChange}
-              className={`w-full px-4 py-3 bg-brand-900 border-[1.5px] ${errors.email ? 'border-danger focus:border-danger focus:ring-danger/15' : 'border-neutral-700 focus:border-brand-500 focus:ring-[3px] focus:ring-brand-500/15'} rounded-xl text-white font-body text-[15px] transition-all outline-none placeholder:text-neutral-600`}
+              className={`w-full px-5 py-4 bg-black/40 border ${errors.email ? 'border-danger focus:border-danger focus:bg-danger/5' : 'border-white/10 focus:border-brand-500 focus:bg-black/60'} rounded-2xl text-white font-body text-[15px] transition-all outline-none placeholder:text-neutral-600 shadow-inner`}
             />
             {errors.email && <span className="text-[13px] text-danger mt-1">{errors.email}</span>}
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="contact-message" className="text-sm font-semibold text-neutral-300">
-            Your Message <span className="text-danger ml-0.5">*</span>
+          <label htmlFor="contact-message" className="text-[13px] uppercase tracking-wider font-bold text-neutral-400">
+            Your Message <span className="text-brand-400 ml-0.5">*</span>
           </label>
           <textarea
             id="contact-message"
@@ -171,17 +171,18 @@ export default function ContactForm() {
             placeholder="Tell us about your project, goals, and timeline..."
             value={form.message}
             onChange={handleChange}
-            className={`w-full px-4 py-3 bg-brand-900 border-[1.5px] ${errors.message ? 'border-danger focus:border-danger focus:ring-danger/15' : 'border-neutral-700 focus:border-brand-500 focus:ring-[3px] focus:ring-brand-500/15'} rounded-xl text-white font-body text-[15px] transition-all outline-none placeholder:text-neutral-600 resize-y min-h-[130px] leading-relaxed`}
+            className={`w-full px-5 py-4 bg-black/40 border ${errors.message ? 'border-danger focus:border-danger focus:bg-danger/5' : 'border-white/10 focus:border-brand-500 focus:bg-black/60'} rounded-2xl text-white font-body text-[15px] transition-all outline-none placeholder:text-neutral-600 resize-y min-h-[160px] leading-relaxed shadow-inner`}
           />
           {errors.message && <span className="text-[13px] text-danger mt-1">{errors.message}</span>}
         </div>
 
-        <button
-          type="submit"
-          id="contact-submit"
-          className="w-full justify-center py-3.5 px-7 text-base rounded-full font-semibold transition-all flex items-center gap-2 bg-gradient-to-br from-brand-500 to-accent-500 text-white hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(37,99,235,0.4)] disabled:opacity-70 disabled:cursor-not-allowed"
-          disabled={status === "loading"}
-        >
+        <div className="pt-2 flex justify-end">
+          <button
+            type="submit"
+            id="contact-submit"
+            className="w-full sm:w-auto justify-center py-4 px-10 text-[15px] rounded-full font-bold transition-all flex items-center gap-2 bg-gradient-to-r from-brand-600 to-brand-500 text-white hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(37,99,235,0.4)] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+            disabled={status === "loading"}
+          >
           {status === "loading" ? (
             <>
               <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin inline-block"></span> Sending...
@@ -189,7 +190,8 @@ export default function ContactForm() {
           ) : (
             "Send Message →"
           )}
-        </button>
+          </button>
+        </div>
       </form>
     </div>
   );

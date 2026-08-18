@@ -27,8 +27,9 @@ export async function generateStaticParams() {
 }
 
 // 2. Dynamic Metadata
-export async function generateMetadata({ params }: { params: { slug: string[] } }): Promise<Metadata> {
-  const uri = `/${params.slug.join('/')}/`;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const uri = `/${resolvedParams.slug.join('/')}/`;
   
   try {
     const { data } = await apolloClient.query({
@@ -49,9 +50,10 @@ export async function generateMetadata({ params }: { params: { slug: string[] } 
 }
 
 // 3. Catch-All Page Component
-export default async function CatchAllPage({ params }: { params: { slug: string[] } }) {
+export default async function CatchAllPage({ params }: { params: Promise<{ slug: string[] }> }) {
+  const resolvedParams = await params;
   // Construct the URI exactly as WordPress expects it
-  const uri = `/${params.slug.join('/')}/`;
+  const uri = `/${resolvedParams.slug.join('/')}/`;
 
   // Fetch the page data
   let pageData;

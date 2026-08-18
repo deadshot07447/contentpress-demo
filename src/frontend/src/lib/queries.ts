@@ -11,10 +11,6 @@ export const GET_PAGE_BY_SLUG = gql`
       template {
         templateName
       }
-      seo {
-        title
-        metaDesc
-      }
     }
   }
 `;
@@ -91,10 +87,6 @@ export const GET_POST_BY_SLUG = gql`
             url
           }
         }
-      }
-      seo {
-        title
-        metaDesc
       }
     }
   }

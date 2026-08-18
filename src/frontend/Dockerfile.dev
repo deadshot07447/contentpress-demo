@@ -1,0 +1,18 @@
+FROM node:20-alpine
+
+# Install libc6-compat for Turbopack/SWC bindings on Alpine
+RUN apk add --no-cache libc6-compat
+
+WORKDIR /app
+
+# Copy package files first for efficient caching
+COPY package.json package-lock.json* ./
+
+# Clean install dependencies
+RUN npm install
+
+# Expose Next.js dev port
+EXPOSE 3000
+
+# Start the Next.js development server
+CMD ["npm", "run", "dev"]

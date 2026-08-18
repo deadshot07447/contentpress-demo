@@ -11,9 +11,9 @@ export default function ContactPage({ data }: { data?: any }) {
       <section className="relative text-center py-20 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[radial-gradient(ellipse,rgba(124,58,237,0.12)_0%,transparent_70%)] pointer-events-none"></div>
         <div className="container">
-          <span className="badge badge-blue">Get In Touch</span>
-          <h1 className="my-5 mb-4" dangerouslySetInnerHTML={{ __html: headline }} />
-          <p className="text-lg max-w-[540px] mx-auto">
+          <span className="badge badge-blue mb-4">Get In Touch</span>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight" dangerouslySetInnerHTML={{ __html: headline }} />
+          <p className="text-lg text-neutral-400 max-w-[600px] mx-auto leading-relaxed">
             {subhead}
           </p>
         </div>
