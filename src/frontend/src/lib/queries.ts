@@ -20,6 +20,7 @@ export const GET_ALL_PAGES = gql`
   query GetAllPages {
     pages {
       nodes {
+        uri
         slug
         title
       }
